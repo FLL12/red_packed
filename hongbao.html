@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>微信红包</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			function hongBao(a,count,maxNum,minNum) {
+				if( a == 1) {arr.push(count);return arr}else{
+				var purMoney = ( Math.random()*( maxNum - minNum ) + minNum ).toFixed(2);
+				while(purMoney < count - maxNum*(a-1) || purMoney > count - minNum*(a-1) ) {
+					purMoney = ( Math.random()*( maxNum - minNum ) + minNum ).toFixed(2); 
+				}
+				arr.push(purMoney);
+				hongBao(--a,count-purMoney,maxNum,minNum);
+			}
+		}
+			hongBao(10,100,12,6);
+			console.log(arr);
+		</script>
+	</body>
+</html>
